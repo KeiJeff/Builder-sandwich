@@ -1,0 +1,64 @@
+# KJeff 2023 "Build a sandwich"
+# Brief example of the builder design pattern 
+
+class SandwichMaker:
+    def __init__(self, builder):
+        self._builder = builder
+
+    def make_sandwich(self):
+        self._builder.prepare_bread()
+        self._builder.add_filling()
+        self._builder.add_toppings()
+
+class SandwichBuilder:
+    def prepare_bread(self):
+        pass
+
+    def add_filling(self):
+        pass
+
+    def add_toppings(self):
+        pass
+
+    def get_sandwich(self):
+        pass
+
+class BLTSandwichBuilder(SandwichBuilder):
+    def prepare_bread(self):
+        print("Preparing whole wheat bread for the BLT sandwich")
+
+    def add_filling(self):
+        print("Adding bacon, lettuce, and tomato filling")
+
+    def add_toppings(self):
+        print("Adding mayo and mustard toppings")
+
+    def get_sandwich(self):
+        return "BLT sandwich"
+
+class VeggieSandwichBuilder(SandwichBuilder):
+    def prepare_bread(self):
+        print("Preparing sourdough bread for the veggie sandwich")
+
+    def add_filling(self):
+        print("Adding avocado, cucumber, and lettuce filling")
+
+    def add_toppings(self):
+        print("Adding hummus and hot sauce toppings")
+
+    def get_sandwich(self):
+        return "Veggie sandwich"
+
+if __name__ == "__main__":
+    blt_builder = BLTSandwichBuilder()
+    veggie_builder = VeggieSandwichBuilder()
+
+    sandwich_maker = SandwichMaker(blt_builder)
+    print("Making a BLT sandwich:")
+    sandwich_maker.make_sandwich()
+    print("Sandwich:", blt_builder.get_sandwich())
+
+    sandwich_maker = SandwichMaker(veggie_builder)
+    print("Making a veggie sandwich:")
+    sandwich_maker.make_sandwich()
+    print("Sandwich:", veggie_builder.get_sandwich())
