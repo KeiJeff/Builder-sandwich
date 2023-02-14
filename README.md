@@ -1,5 +1,6 @@
 # Builder-sandwich
-Practice and explication of the builder design pattern
+
+Builder design pattern example
 
 What is the builder design pattern?
 
