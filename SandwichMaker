@@ -1,6 +1,10 @@
 # KJeff 2023 "Build a sandwich"
 # Brief example of the builder design pattern 
 
+
+
+
+#SandwichMaker class uses a SandwichBuilder instance to build a sandwich.
 class SandwichMaker:
     def __init__(self, builder):
         self._builder = builder
@@ -9,7 +13,8 @@ class SandwichMaker:
         self._builder.prepare_bread()
         self._builder.add_filling()
         self._builder.add_toppings()
-
+ 
+#The SandwichBuilder class defines the abstract interface for creating a sandwich, 
 class SandwichBuilder:
     def prepare_bread(self):
         pass
@@ -22,6 +27,8 @@ class SandwichBuilder:
 
     def get_sandwich(self):
         pass
+
+#Our concrete builder classes will provide specific implementation requirements for different types of sandwiches
 
 class BLTSandwichBuilder(SandwichBuilder):
     def prepare_bread(self):
@@ -50,6 +57,7 @@ class VeggieSandwichBuilder(SandwichBuilder):
         return "Veggie sandwich"
 
 if __name__ == "__main__":
+       # final sandwich is obtained by calling the get_sandwich method on the builder.
     blt_builder = BLTSandwichBuilder()
     veggie_builder = VeggieSandwichBuilder()
 
